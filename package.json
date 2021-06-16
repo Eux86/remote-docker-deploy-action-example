@@ -1,0 +1,21 @@
+{
+  "name": "remote-docker-deploy-action-example",
+  "version": "1.0.0",
+  "description": "example package to show how to deploy code on a remote docker instance using github actions",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy_not_working": "docker-compose up --build -d",
+    "deploy:stop-container": "docker stop test-server || true",
+    "deploy:remove-container": "docker container rm test-server || true",
+    "deploy:start-container": "docker run --name test-server -d -p 3000:3000 test-server",
+    "deploy:docker-build": "docker build . -t test-server",
+    "deploy": "npm run deploy:docker-build && npm run deploy:stop-container && npm run deploy:remove-container && npm run deploy:start-container"
+  },
+  "author": "Eugenio Di Tullio",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
