@@ -6,7 +6,6 @@
   "scripts": {
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy_not_working": "docker-compose up --build -d",
     "deploy:stop-container": "docker stop test-server || true",
     "deploy:remove-container": "docker container rm test-server || true",
     "deploy:start-container": "docker run --name test-server -d -p 3000:3000 test-server",
